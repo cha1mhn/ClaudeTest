@@ -1,0 +1,27 @@
+{
+  "name": "hubspot-portal-audit",
+  "version": "1.0.0",
+  "description": "HubSpot Portal Audit Tool - Audits core objects, properties, workflows, and generates PPTX report",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "hs-audit": "./index.js"
+  },
+  "scripts": {
+    "audit": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:36035/git/cha1mhn/ClaudeTest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hubspot/api-client": "^13.4.0",
+    "dotenv": "^17.3.1",
+    "pptxgenjs": "^4.0.1",
+    "yargs": "^18.0.0"
+  }
+}
