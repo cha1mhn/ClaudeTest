@@ -1,0 +1,14 @@
+{
+  "name": "claude-test-benchmarks",
+  "version": "1.0.0",
+  "description": "Performance benchmarks and profiling",
+  "main": "index.js",
+  "scripts": {
+    "bench": "node benchmarks/runner.js",
+    "bench:profile": "node --prof benchmarks/runner.js && node --prof-process isolate-*.log",
+    "bench:clinic": "node benchmarks/runner.js"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}
