@@ -1,0 +1,27 @@
+{
+  "title": "Pipeline Hygiene",
+  "fetch": {
+    "targetUrl": "https://YOUR_BACKEND_URL/api/audit/summary",
+    "objectTypes": [
+      { "name": "deals", "propertiesToSend": ["hs_pipeline"] },
+      { "name": "companies", "propertiesToSend": [] }
+    ]
+  },
+  "display": {
+    "properties": [
+      { "name": "grade", "label": "Health Grade", "dataType": "STRING" },
+      { "name": "score", "label": "Score", "dataType": "NUMBER" },
+      { "name": "totalIssues", "label": "Issues Found", "dataType": "NUMBER" },
+      { "name": "openDeals", "label": "Open Deals", "dataType": "NUMBER" }
+    ]
+  },
+  "actions": [
+    {
+      "type": "IFRAME",
+      "width": 890,
+      "height": 580,
+      "uri": "https://YOUR_FRONTEND_URL/?view=card",
+      "label": "Open Full Audit"
+    }
+  ]
+}

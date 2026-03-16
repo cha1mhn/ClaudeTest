@@ -1,0 +1,16 @@
+{
+  "name": "GTM Pipeline Hygiene Auditor",
+  "description": "Audits HubSpot pipeline data quality and Clay enrichment coverage, grades pipeline health, and provides actionable RevOps recommendations.",
+  "version": "1.0.0",
+  "scopes": [
+    "crm.objects.deals.read",
+    "crm.objects.contacts.read",
+    "crm.objects.owners.read",
+    "crm.pipelines.read"
+  ],
+  "extensions": {
+    "crm": {
+      "cards": [{ "file": "crm-card.json" }]
+    }
+  }
+}
