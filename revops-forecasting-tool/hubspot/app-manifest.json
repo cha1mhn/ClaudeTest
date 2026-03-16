@@ -1,0 +1,22 @@
+{
+  "name": "RevOps Forecasting Tool",
+  "description": "Pipeline forecasting and revenue intelligence embedded directly in HubSpot CRM. Supports weighted pipeline, forecast categories, historical win-rate, and trend-based methodologies.",
+  "version": "1.0.0",
+  "scopes": [
+    "crm.objects.deals.read",
+    "crm.objects.owners.read",
+    "crm.pipelines.read"
+  ],
+  "redirectUrls": [
+    "https://YOUR_BACKEND_URL/auth/callback"
+  ],
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "crm-card.json"
+        }
+      ]
+    }
+  }
+}

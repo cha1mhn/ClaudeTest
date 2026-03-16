@@ -1,0 +1,53 @@
+{
+  "title": "RevOps Forecast",
+  "fetch": {
+    "targetUrl": "https://YOUR_BACKEND_URL/api/forecast/summary",
+    "objectTypes": [
+      {
+        "name": "deals",
+        "propertiesToSend": ["hs_pipeline", "hubspot_owner_id"]
+      },
+      {
+        "name": "contacts",
+        "propertiesToSend": []
+      },
+      {
+        "name": "companies",
+        "propertiesToSend": []
+      }
+    ]
+  },
+  "display": {
+    "properties": [
+      {
+        "name": "forecastedRevenue",
+        "label": "Forecasted Revenue",
+        "dataType": "CURRENCY"
+      },
+      {
+        "name": "totalPipelineValue",
+        "label": "Total Pipeline",
+        "dataType": "CURRENCY"
+      },
+      {
+        "name": "openDealCount",
+        "label": "Open Deals",
+        "dataType": "NUMBER"
+      },
+      {
+        "name": "winRate",
+        "label": "Win Rate",
+        "dataType": "PERCENT"
+      }
+    ]
+  },
+  "actions": [
+    {
+      "type": "IFRAME",
+      "width": 890,
+      "height": 580,
+      "uri": "https://YOUR_FRONTEND_URL/?view=card",
+      "label": "Open Full Forecast Dashboard"
+    }
+  ]
+}
