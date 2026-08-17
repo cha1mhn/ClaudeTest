@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      PORT: 4001
+      DB_PATH: /app/data/reports.db
+      ALLOWED_ORIGINS: http://localhost:3100
+    volumes:
+      - bills-data:/app/data
+    ports:
+      - "4001:4001"
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "3100:80"
+
+volumes:
+  bills-data:
