@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chaitanya Mohan</title>
-<meta name="description" content="Chaitanya Mohan — revenue operations. London." />
+<title>Chai</title>
+<meta name="description" content="Chai. Revenue operations. London." />
+<link rel="icon" href="chai.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -25,47 +26,49 @@ main{max-width:640px;margin:0 auto;padding:13vh 0 12vh}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--ink);color:var(--bg)}
 
-.top{display:flex;align-items:baseline;gap:18px;margin-bottom:11vh}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:10vh}
+.top img{width:46px;height:46px;border-radius:50%;display:block}
 .top .nm{font-weight:500}
-.top nav{margin-left:auto;display:flex;gap:18px}
+.top nav{margin-left:auto;display:flex;align-items:center;gap:18px}
 .top nav a,.top button{color:var(--dim);font:inherit;font-size:15px;background:none;border:0;padding:0;cursor:pointer;transition:color .25s}
 .top nav a:hover,.top button:hover{color:var(--ink)}
 
 .lede{font-size:26px;line-height:1.35;letter-spacing:-.022em;margin-bottom:26px}
-.lede span{color:var(--dim)}
 .now{color:var(--dim);font-size:17px;max-width:54ch}
-.now a{border-bottom:1px solid var(--line)}
-.now a:hover{border-color:var(--ink);color:var(--ink)}
+.now b{font-weight:500;color:var(--ink)}
 
 h2{font-size:15px;font-weight:400;color:var(--dim);margin:10vh 0 4px;letter-spacing:0}
 
 .list{border-top:1px solid var(--line)}
 .row{border-bottom:1px solid var(--line)}
-.hd{display:flex;gap:18px;align-items:baseline;width:100%;padding:15px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:default;transition:opacity .3s}
-.hd .yr{color:var(--dim);font-size:14px;flex:none;width:76px;font-variant-numeric:tabular-nums}
-.hd .rl{flex:1;min-width:0}
-.hd .og{color:var(--dim);flex:none}
+.hd{display:flex;gap:18px;align-items:baseline;width:100%;padding:15px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;transition:opacity .3s}
+.hd .yr{color:var(--dim);font-size:14px;flex:none;width:80px;font-variant-numeric:tabular-nums}
+.hd .co{flex:1;min-width:0}
+.hd .rl{color:var(--dim);flex:none;text-align:right}
+.hd .rl::after{content:" +";}
+.row.open .rl::after{content:" \2013";}
 .list.hovering .row:not(:hover) .hd{opacity:.32}
-.row.can .hd{cursor:pointer}
-.row.can .og::after{content:" +";color:var(--dim)}
-.row.open .og::after{content:" –"}
 .body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
-.body p{color:var(--dim);font-size:16px;padding:0 0 18px 94px;max-width:62ch}
+.body p{color:var(--dim);font-size:16px;padding:0 0 18px 98px;max-width:62ch}
 
-.links a{display:flex;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);transition:opacity .3s}
+.links{border-top:1px solid var(--line)}
+.links a,.links div{display:flex;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);transition:opacity .3s}
 .links.hovering a:not(:hover){opacity:.32}
-.links .yr{color:var(--dim);font-size:14px;flex:none;width:76px}
+.links .k{color:var(--dim);font-size:14px;flex:none;width:80px}
+.links .d{color:var(--dim);margin-left:auto;text-align:right;flex:none}
 .links .ar{margin-left:auto;color:var(--dim);transition:transform .25s}
 .links a:hover .ar{transform:translate(3px,-3px)}
 
 footer{margin-top:11vh;color:var(--dim);font-size:15px}
+footer a{border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--ink);border-color:var(--ink)}
 
 @media(max-width:560px){
   main{padding:8vh 0 10vh}
   .lede{font-size:22px}
-  .hd,.links a{flex-wrap:wrap;gap:0 14px}
-  .hd .yr,.links .yr{width:100%;margin-bottom:3px}
-  .hd .og{width:100%;color:var(--dim)}
+  .hd,.links a,.links div{flex-wrap:wrap;gap:0 14px}
+  .hd .yr,.links .k{width:100%;margin-bottom:3px}
+  .hd .rl,.links .d{width:100%;text-align:left;margin-left:0}
   .body p{padding-left:0}
 }
 
@@ -77,94 +80,90 @@ footer{margin-top:11vh;color:var(--dim);font-size:15px}
 <main>
 
   <div class="top fade" style="animation-delay:.05s">
-    <span class="nm">Chaitanya Mohan</span>
+    <img src="chai.png" alt="Chai" width="46" height="46" />
+    <span class="nm">Chai</span>
     <nav>
-      <a href="https://longerodds.substack.com" target="_blank" rel="noopener">Writing</a>
       <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener">LinkedIn</a>
-      <button id="theme" aria-label="Toggle theme">◐</button>
+      <button id="theme" aria-label="Toggle theme">&#9680;</button>
     </nav>
   </div>
 
   <p class="lede fade" style="animation-delay:.15s">
-    I help companies get their revenue operations right — setting up CRMs,
-    migrating messy data, connecting tools, and building the processes that keep
-    sales, marketing and customer success working as one team.
-    <span>It's never really the technology. It's the experiences it creates for the people using it.</span>
+    I get revenue operations working. CRMs set up properly, messy data migrated,
+    tools joined up, and the processes that keep sales, marketing and customer
+    success pulling in one direction.
   </p>
 
   <p class="now fade" style="animation-delay:.25s">
-    Currently Senior Revenue Operations Analyst at <b style="font-weight:500">iplicit</b>, London.
-    Mostly HubSpot, supported by Claude, Clay, Apollo, Zapier and Asana.
-    I write about what I'm building at <a href="https://longerodds.substack.com" target="_blank" rel="noopener">Longer Odds</a>.
+    Senior Revenue Operations Analyst at <b>iplicit</b> in London.
+    Mostly HubSpot, with Claude, Clay, Apollo, Zapier and Asana around it.
   </p>
 
   <h2 class="fade" style="animation-delay:.35s">Work</h2>
   <div class="list fade" id="work" style="animation-delay:.4s"></div>
 
-  <h2>Writing &amp; elsewhere</h2>
+  <h2>Featured</h2>
   <div class="links" id="links"></div>
 
   <h2>Education</h2>
-  <div class="links" style="pointer-events:none">
-    <a><span class="yr">2024</span><span>MSc International Business Strategy &amp; Operations, <i style="font-style:normal;color:var(--dim)">Queen's University Belfast — with Commendation</i></span></a>
-  </div>
+  <div class="links" id="edu"></div>
 
-  <footer>London · <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line)">Say hello</a></footer>
+  <footer>London. <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener">Say hello</a>.</footer>
 </main>
 
 <script>
 /* ---- content ---- */
 const WORK = [
-  { yr:"2025 —",   role:"Senior Revenue Operations Analyst", org:"iplicit",
-    note:"Revenue operations at a UK cloud accounting platform — FT1000 top-20, £44m raised, No.5 on The Sunday Times Best Places to Work 2026. Working on an AI layer over the GTM stack, pushing vendors to expose MCP servers so workflows orchestrate across tools instead of bespoke integrations." },
-  { yr:"2025 —",   role:"Community Member", org:"RevOps Chat" },
-  { yr:"2025",     role:"Revenue Operations Consultant", org:"ProsperoHub",
-    note:"Designed and shipped strategies across HubSpot's CMS, Sales, Marketing, Service and Operations Hubs for clients of a HubSpot Elite Partner — strategy sessions, end-to-end process design, complex implementations, training and adoption. Also ran internal platform onboarding and rebuilt the client onboarding experience." },
-  { yr:"2024",     role:"Revenue Operations Specialist", org:"ProsperoHub",
-    note:"Part-time, alongside finishing my MSc thesis at Queen's." },
-  { yr:"2022 — 24",role:"Senior Revenue Operations Analyst", org:"Zeni",
-    note:"Sat between marketing, sales, CS, partnerships and implementation in Sunnyvale. Co-built the RevOps ticketing system — 100+ tickets resolved, 2–3 cross-departmental projects a quarter. Ran an advanced HubSpot CRM with custom integrations, and owned dashboards plus end-of-month reporting for the exec team." },
-  { yr:"2021 — 22",role:"Business Analyst", org:"DCKAP",
-    note:"Integrated storefronts (Magento, BigCommerce, Shopify) with ERPs (DDI, Epicor P21, Inform, NetSuite) via iPaaS, keeping data accurate across 15+ ERP, PIM, CRM, POS and CMS platforms. Led a team of eight on a BigCommerce × Epicor P21 build that lifted operational efficiency 15%." },
-  { yr:"2020 — 21",role:"Product Marketing Manager", org:"DCKAP",
-    note:"Owned messaging, positioning, go-to-market, site content and white papers. Grew the digital footprint 4x in eight months and partnered with PMs on release planning, reporting revenue outcomes through Salesforce, HubSpot and Jira." },
-  { yr:"2020",     role:"Associate Product Manager", org:"Finner" },
-  { yr:"2020",     role:"Marketing Executive", org:"Finner", note:"Internship." }
+  { yr:"Now",     co:"iplicit", rl:"Senior RevOps Analyst",
+    note:"Revenue operations at a UK cloud accounting platform. Building an AI layer over the go to market stack and pushing vendors to expose MCP servers, so workflows run across the whole toolset instead of one bespoke integration at a time." },
+  { yr:"2024-25", co:"ProsperoHub", rl:"RevOps Consultant",
+    note:"Client work for a HubSpot Elite Partner, across the CMS, Sales, Marketing, Service and Operations Hubs. Strategy sessions, process design, implementations, training and adoption. Also ran internal platform onboarding and rebuilt how new clients get set up." },
+  { yr:"2022-24", co:"Zeni", rl:"Senior RevOps Analyst",
+    note:"Sat between marketing, sales, CS, partnerships and implementation in Sunnyvale. Co-built the RevOps ticketing system, cleared 100+ tickets and ran two or three cross-team projects a quarter. Managed an advanced HubSpot CRM with custom integrations, plus exec dashboards and month end reporting." },
+  { yr:"2020-22", co:"DCKAP", rl:"Business Analyst, PMM",
+    note:"Joined storefronts like Magento, BigCommerce and Shopify to ERPs including Epicor P21 and NetSuite, keeping data straight across 15+ systems. Led eight people on a BigCommerce and Epicor build that lifted operational efficiency 15%. Before that, product marketing: messaging, positioning, go to market, and 4x digital footprint in eight months." },
+  { yr:"2020",    co:"Finner", rl:"Associate PM",
+    note:"Started as a marketing intern, moved into product." }
 ];
 
 const LINKS = [
-  { yr:"Ongoing", t:"Longer Odds — notes on what I'm building", h:"https://longerodds.substack.com" },
-  { yr:"Feature", t:"Unlocking the Power of RevOps — Datazip", h:"https://datazip.io/blog/unlocking-the-power-of-revops-an-insiders-perspective-with-chaitanya-mohan" },
-  { yr:"Feature", t:"My MSc International Business journey — Queen's Business School", h:"http://www.qub.ac.uk/schools/queens-business-school/student-opportunities/student-experiences-blog/PGTChairanyaMohanBlog.html" },
-  { yr:"Essay",   t:"Lessons on scaling careers, with the CEO of GSK", h:"https://medium.com/@itschaitanyamohan/an-extraordinary-lesson-about-scaling-careers-by-the-ceo-of-glaxosmithkline-gsk-pharma-1be14205c227" }
+  { k:"Interview", t:"Unlocking the Power of RevOps", d:"Datazip",
+    h:"https://datazip.io/blog/unlocking-the-power-of-revops-an-insiders-perspective-with-chaitanya-mohan" }
+];
+
+const EDU = [
+  { k:"MSc",   t:"Queen's University Belfast", d:"Distinction" },
+  { k:"Exec",  t:"POLIMI Graduate School of Management", d:"Leadership, Strategy &amp; Operations" },
+  { k:"BA",    t:"University of Nottingham", d:"Politics &amp; International Relations" }
 ];
 
 /* ---- render ---- */
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 document.getElementById('work').innerHTML = WORK.map(w => `
-  <div class="row${w.note ? ' can' : ''}">
-    <button class="hd"${w.note ? '' : ' tabindex="-1"'} aria-expanded="false">
-      <span class="yr">${esc(w.yr)}</span><span class="rl">${esc(w.role)}</span><span class="og">${esc(w.org)}</span>
+  <div class="row">
+    <button class="hd" aria-expanded="false">
+      <span class="yr">${esc(w.yr)}</span><span class="co">${esc(w.co)}</span><span class="rl">${esc(w.rl)}</span>
     </button>
-    ${w.note ? `<div class="body"><p>${esc(w.note)}</p></div>` : ''}
+    <div class="body"><p>${esc(w.note)}</p></div>
   </div>`).join('');
 
 document.getElementById('links').innerHTML = LINKS.map(l => `
   <a href="${esc(l.h)}" target="_blank" rel="noopener">
-    <span class="yr">${esc(l.yr)}</span><span>${esc(l.t)}</span><span class="ar">↗</span>
+    <span class="k">${esc(l.k)}</span><span>${esc(l.t)}</span><span class="ar">&#8599;</span>
   </a>`).join('');
 
+document.getElementById('edu').innerHTML = EDU.map(e => `
+  <div><span class="k">${esc(e.k)}</span><span>${e.t}</span><span class="d">${e.d}</span></div>`).join('');
+
 /* ---- interactions ---- */
-// hover focus: dim the siblings
 document.querySelectorAll('.list, .links').forEach(l => {
   l.addEventListener('pointerenter', () => l.classList.add('hovering'));
   l.addEventListener('pointerleave', () => l.classList.remove('hovering'));
 });
 
-// click to expand
 document.getElementById('work').addEventListener('click', e => {
-  const row = e.target.closest('.row.can');
+  const row = e.target.closest('.row');
   if (!row) return;
   const body = row.querySelector('.body'), open = row.classList.contains('open');
   document.querySelectorAll('.row.open').forEach(o => {
@@ -179,7 +178,12 @@ document.getElementById('work').addEventListener('click', e => {
   }
 });
 
-// theme
+// keep an expanded row the right height when the window changes width
+addEventListener('resize', () => {
+  const open = document.querySelector('.row.open .body');
+  if (open) { open.style.maxHeight = 'none'; open.style.maxHeight = open.scrollHeight + 'px'; }
+});
+
 const root = document.documentElement;
 try { const s = localStorage.getItem('theme'); if (s) root.dataset.theme = s; } catch (e) {}
 document.getElementById('theme').addEventListener('click', () => {
