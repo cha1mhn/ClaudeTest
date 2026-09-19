@@ -1,38 +1,20 @@
-# Portfolio
+# chaitanyamohan
 
-A single-file, dependency-free, interactive one-page portfolio.
+A single-file personal site. No build step, no dependencies — open `index.html`.
 
-## How to use
+## Editing
 
-Open `index.html` in any browser. That's it — no build step, no install.
+All content lives in two arrays near the top of the `<script>` block: `WORK` and
+`LINKS`. The intro paragraphs and the education row are plain HTML in the body.
+A work entry with a `note` becomes expandable; one without stays a single line.
 
-## How to edit
+## Interactions
 
-Everything on the page renders from one object near the top of the `<script>` block
-in `index.html`:
-
-```js
-const PROFILE = { name, location, roles, bio, about, email, links,
-                  stats, experience, skills, projects, education };
-```
-
-Change the values there and the whole page updates — nav, timeline, skill bars,
-project cards, and the command palette are all generated from it.
-
-## What's interactive
-
-- Typewriter role cycler in the hero
-- Command palette — `⌘K` / `Ctrl+K` or `/` — fuzzy jump to any section or action
-- Scroll progress bar and scroll-spy nav underline
-- Expandable experience timeline (accordion)
-- Filterable skill grid with bars that animate on scroll
-- Project cards with a cursor-following spotlight
+- Hovering the work or links list dims every other row
+- Click a role to expand its detail (only roles with a `note`)
 - Light/dark toggle, persisted to `localStorage`, defaults to system preference
-- Click-to-copy email with a toast confirmation
-- Scroll-reveal animations, staggered per item
-- Respects `prefers-reduced-motion`; no horizontal scroll at phone width
+- Staggered fade-in on load; all motion is disabled under `prefers-reduced-motion`
 
 ## Deploying
 
-It's one static file. Drop `index.html` on GitHub Pages, Netlify, Vercel, or any
-static host.
+One static file — GitHub Pages, Netlify, Vercel, or any static host.
