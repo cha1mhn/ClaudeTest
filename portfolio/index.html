@@ -11,99 +11,102 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{ --bg:#FFFFFF; --ink:#111111; --dim:#8A8A8A; --line:#E8E8E8; --ac:#BC4B23; }
-:root[data-theme="dark"]{ --bg:#0D0D0D; --ink:#EDEDED; --dim:#7C7C7C; --line:#242424; --ac:#F08A5D; }
-@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --bg:#0D0D0D; --ink:#EDEDED; --dim:#7C7C7C; --line:#242424; --ac:#F08A5D; } }
+/* rust and teal sit opposite each other on the wheel: rust carries the work,
+   teal carries everything you can click through to. */
+:root{ --bg:#FFFFFF; --ink:#101012; --dim:#87878E; --line:#EAEAE6; --ac:#B8461F; --ac2:#12707E; }
+:root[data-theme="dark"]{ --bg:#0C0C0D; --ink:#ECECEA; --dim:#7A7A82; --line:#222225; --ac:#F08A5D; --ac2:#5CC2CE; }
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --bg:#0C0C0D; --ink:#ECECEA; --dim:#7A7A82; --line:#222225; --ac:#F08A5D; --ac2:#5CC2CE; } }
 @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
 
 *{box-sizing:border-box;margin:0}
 body{
   background:var(--bg); color:var(--ink);
-  font:400 17px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  font:400 16px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
   -webkit-font-smoothing:antialiased; letter-spacing:-.011em;
   padding:0 24px; overflow-x:hidden;
-  transition:background .5s ease, color .5s ease;
+  transition:background .45s ease,color .45s ease;
 }
-main{max-width:640px;margin:0 auto;padding:13vh 0 12vh}
+main{max-width:600px;margin:0 auto;padding:84px 0 72px}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--ac);color:#fff}
 
 /* header */
-.top{display:flex;align-items:center;gap:14px;margin-bottom:10vh}
-.top img{width:46px;height:46px;border-radius:50%;display:block;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:64px}
+.top img{width:40px;height:40px;border-radius:50%;display:block;transition:transform .45s cubic-bezier(.22,1,.36,1)}
 .top img:hover{transform:scale(1.08) rotate(-3deg)}
 .top .nm{font-weight:500}
-.top nav{margin-left:auto;display:flex;align-items:center;gap:18px}
-.top nav a,.top button{position:relative;color:var(--dim);font:inherit;font-size:15px;background:none;border:0;padding:0;cursor:pointer;transition:color .25s,transform .35s}
-.top nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1px;background:var(--ac);transition:right .3s cubic-bezier(.22,1,.36,1)}
-.top nav a:hover{color:var(--ac)}
+.top nav{margin-left:auto;display:flex;align-items:center;gap:16px}
+.top nav a,.top button{position:relative;color:var(--dim);font:inherit;font-size:14px;background:none;border:0;padding:0;cursor:pointer;transition:color .25s,transform .35s}
+.top nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1px;background:var(--ac2);transition:right .3s cubic-bezier(.22,1,.36,1)}
+.top nav a:hover{color:var(--ac2)}
 .top nav a:hover::after{right:0}
-.top button:hover{color:var(--ac)}
-#snd.on{color:var(--ac)}
+.top button:hover{color:var(--ac2)}
+#snd.on{color:var(--ac2)}
 #theme{transition:transform .5s cubic-bezier(.22,1,.36,1),color .25s}
 #theme.spin{transform:rotate(180deg)}
 
 /* intro */
-.lede{font-size:26px;line-height:1.35;letter-spacing:-.022em;margin-bottom:26px}
-.now{color:var(--dim);font-size:17px;max-width:54ch}
+.lede{font-size:23px;line-height:1.32;letter-spacing:-.024em;margin-bottom:16px;max-width:31ch}
+.lede span{color:var(--dim)}
+.now{color:var(--dim);font-size:16px;max-width:50ch}
 .now b{font-weight:500;color:var(--ac)}
 
-h2{font-size:15px;font-weight:400;color:var(--dim);margin:10vh 0 4px;letter-spacing:0}
+h2{font-size:13px;font-weight:400;color:var(--dim);margin:56px 0 2px;letter-spacing:.01em}
 
-/* work list */
+/* work */
 .list{border-top:1px solid var(--line)}
 .row{border-bottom:1px solid var(--line)}
-.hd{display:flex;gap:18px;align-items:center;width:100%;padding:15px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;
+.hd{display:flex;gap:16px;align-items:center;width:100%;padding:13px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;
     transition:opacity .3s,transform .35s cubic-bezier(.22,1,.36,1)}
-.hd .yr{color:var(--ac);font-size:14px;flex:none;width:80px;font-variant-numeric:tabular-nums;transition:letter-spacing .35s}
-.hd .co{flex:1;min-width:0}
-.hd .rl{color:var(--dim);flex:none;text-align:right;transition:color .25s}
-.row:hover .hd,.row.open .hd{transform:translateX(5px)}
-.row:hover .yr{letter-spacing:.03em}
+.hd .yr{color:var(--ac);font-size:13px;flex:none;width:68px;font-variant-numeric:tabular-nums;transition:letter-spacing .35s}
+.hd .co{flex:1;min-width:0;font-weight:500}
+.hd .rl{color:var(--dim);font-size:15px;flex:none;text-align:right;transition:color .25s}
+.row:hover .hd,.row.open .hd{transform:translateX(4px)}
+.row:hover .yr{letter-spacing:.04em}
 .row:hover .rl,.row.open .rl{color:var(--ink)}
-.list.hovering .row:not(:hover) .hd{opacity:.3}
-.hd:active{transform:translateX(5px) scale(.99)}
+.list.hovering .row:not(:hover) .hd{opacity:.28}
+.hd:active{transform:translateX(4px) scale(.99)}
 
-/* plus / minus marker */
-.mk{position:relative;width:9px;height:9px;flex:none;margin-left:10px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.mk{position:relative;width:8px;height:8px;flex:none;margin-left:12px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
 .mk::before,.mk::after{content:"";position:absolute;background:var(--ac);transition:transform .4s cubic-bezier(.22,1,.36,1)}
-.mk::before{left:0;right:0;top:4px;height:1.5px}
-.mk::after{top:0;bottom:0;left:4px;width:1.5px}
+.mk::before{left:0;right:0;top:3.5px;height:1.5px}
+.mk::after{top:0;bottom:0;left:3.5px;width:1.5px}
 .row.open .mk{transform:rotate(180deg)}
 .row.open .mk::after{transform:scaleY(0)}
 
 .body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
-.body p{color:var(--dim);font-size:16px;padding:0 0 18px 98px;max-width:62ch;
-        opacity:0;transform:translateY(6px);transition:opacity .4s .12s,transform .4s .12s}
+.body p{color:var(--dim);font-size:15px;line-height:1.55;padding:0 0 15px 84px;max-width:56ch;
+        opacity:0;transform:translateY(5px);transition:opacity .4s .1s,transform .4s .1s}
 .row.open .body p{opacity:1;transform:none}
 
-/* link + education lists */
+/* featured + education */
 .links{border-top:1px solid var(--line)}
-.links a,.links div{display:flex;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);
+.links a,.links div{display:flex;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);
                     transition:opacity .3s,transform .35s cubic-bezier(.22,1,.36,1)}
-.links a:hover{transform:translateX(5px)}
-.links.hovering a:not(:hover){opacity:.3}
-.links .k{color:var(--ac);font-size:14px;flex:none;width:80px}
-.links .d{color:var(--dim);margin-left:auto;text-align:right;flex:none}
-.links .ar{margin-left:auto;color:var(--ac);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.links a:hover{transform:translateX(4px)}
+.links.hovering a:not(:hover){opacity:.28}
+.links .k{color:var(--ac2);font-size:13px;flex:none;width:68px}
+.links .t{flex:1;min-width:0}
+.links .d{color:var(--dim);font-size:15px;text-align:right;flex:none}
+.links .ar{margin-left:12px;color:var(--ac2);transition:transform .3s cubic-bezier(.22,1,.36,1)}
 .links a:hover .ar{transform:translate(4px,-4px)}
 
-footer{margin-top:11vh;color:var(--dim);font-size:15px}
-footer a{border-bottom:1px solid var(--line);transition:color .25s,border-color .25s}
-footer a:hover{color:var(--ac);border-color:var(--ac)}
+footer{margin-top:64px;color:var(--dim);font-size:14px}
+footer a{color:var(--ac2);transition:opacity .25s}
+footer a:hover{opacity:.7}
 
 @media(max-width:560px){
-  main{padding:8vh 0 10vh}
-  .lede{font-size:22px}
-  .hd,.links a,.links div{flex-wrap:wrap;gap:0 14px}
-  .hd .yr,.links .k{width:100%;margin-bottom:3px}
-  .hd .rl,.links .d{width:auto;text-align:left;margin-left:0}
-  .hd .co{flex:1 0 100%}
-  .mk{margin-left:auto}
+  main{padding:56px 0 64px}
+  .lede{font-size:21px;max-width:none}
+  .hd,.links a,.links div{flex-wrap:wrap;gap:0 12px}
+  .hd .yr,.links .k{width:100%;margin-bottom:2px}
+  .hd .co,.links .t{flex:1 0 100%}
+  .hd .rl,.links .d{width:auto;text-align:left;flex:0 1 auto;margin-top:1px}
+  .mk,.links .ar{margin-left:auto}
   .body p{padding-left:0}
 }
 
-.fade{opacity:0;transform:translateY(10px);animation:up .75s cubic-bezier(.22,1,.36,1) forwards}
+.fade{opacity:0;transform:translateY(8px);animation:up .7s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes up{to{opacity:1;transform:none}}
 </style>
 </head>
@@ -111,7 +114,7 @@ footer a:hover{color:var(--ac);border-color:var(--ac)}
 <main>
 
   <div class="top fade" style="animation-delay:.05s">
-    <img src="chai.png" alt="Chai" width="46" height="46" />
+    <img src="chai.png" alt="Chai" width="40" height="40" />
     <span class="nm">Chai</span>
     <nav>
       <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener" data-tick>LinkedIn</a>
@@ -120,19 +123,18 @@ footer a:hover{color:var(--ac);border-color:var(--ac)}
     </nav>
   </div>
 
-  <p class="lede fade" style="animation-delay:.15s">
-    I get revenue operations working. CRMs set up properly, messy data migrated,
-    tools joined up, and the processes that keep sales, marketing and customer
-    success pulling in one direction.
+  <p class="lede fade" style="animation-delay:.14s">
+    I run revenue operations. <span>Systems, data and the operating rhythm that
+    get sales, marketing and success onto one number.</span>
   </p>
 
-  <p class="now fade" style="animation-delay:.25s">
+  <p class="now fade" style="animation-delay:.22s">
     Senior Revenue Operations Analyst at <b>iplicit</b> in London.
-    Mostly HubSpot, with Claude, Clay, Apollo, Zapier and Asana around it.
+    HubSpot is home. Claude, Clay, Apollo and Zapier do the rest.
   </p>
 
-  <h2 class="fade" style="animation-delay:.35s">Work</h2>
-  <div class="list fade" id="work" style="animation-delay:.4s"></div>
+  <h2 class="fade" style="animation-delay:.3s">Work</h2>
+  <div class="list fade" id="work" style="animation-delay:.34s"></div>
 
   <h2>Featured</h2>
   <div class="links" id="links"></div>
@@ -147,26 +149,26 @@ footer a:hover{color:var(--ac);border-color:var(--ac)}
 /* ---- content ---- */
 const WORK = [
   { yr:"Now",     co:"iplicit", rl:"Senior RevOps Analyst",
-    note:"Revenue operations at a UK cloud accounting platform. Building an AI layer over the go to market stack and pushing vendors to expose MCP servers, so workflows run across the whole toolset instead of one bespoke integration at a time." },
+    note:"I own the go-to-market operating model at a UK accounting platform growing fast enough to break things. Right now that means putting an AI layer over the revenue stack so the pipeline reports itself instead of getting rebuilt by hand every Monday." },
   { yr:"2024-25", co:"ProsperoHub", rl:"RevOps Consultant",
-    note:"Client work for a HubSpot Elite Partner, across the CMS, Sales, Marketing, Service and Operations Hubs. Strategy sessions, process design, implementations, training and adoption. Also ran internal platform onboarding and rebuilt how new clients get set up." },
+    note:"Ran RevOps delivery for a HubSpot Elite Partner across a portfolio of mid-market clients. Took builds from discovery through to adoption, and rewrote the onboarding path so clients went live in weeks instead of a quarter." },
   { yr:"2022-24", co:"Zeni", rl:"Senior RevOps Analyst",
-    note:"Sat between marketing, sales, CS, partnerships and implementation in Sunnyvale. Co-built the RevOps ticketing system, cleared 100+ tickets and ran two or three cross-team projects a quarter. Managed an advanced HubSpot CRM with custom integrations, plus exec dashboards and month end reporting." },
+    note:"Owned the revenue system end to end across marketing, sales, success and partnerships. Rebuilt the CRM into something the exec team could actually run the company on, and turned month end from an investigation into a report." },
   { yr:"2020-22", co:"DCKAP", rl:"Business Analyst, PMM",
-    note:"Joined storefronts like Magento, BigCommerce and Shopify to ERPs including Epicor P21 and NetSuite, keeping data straight across 15+ systems. Led eight people on a BigCommerce and Epicor build that lifted operational efficiency 15%. Before that, product marketing: messaging, positioning, go to market, and 4x digital footprint in eight months." },
+    note:"Built the integration layer joining storefronts to ERPs for mid-market distributors, then moved across to product marketing to own positioning and launch." },
   { yr:"2020",    co:"Finner", rl:"Associate PM",
-    note:"Started as a marketing intern, moved into product." }
+    note:"Early days. Marketing first, then product." }
 ];
 
 const LINKS = [
-  { k:"Interview", t:"Unlocking the Power of RevOps",
+  { k:"Interview", t:"Unlocking the Power of RevOps", d:"Datazip",
     h:"https://datazip.io/blog/unlocking-the-power-of-revops-an-insiders-perspective-with-chaitanya-mohan" }
 ];
 
 const EDU = [
   { k:"MSc",  t:"Queen's University Belfast", d:"Distinction" },
-  { k:"Exec", t:"POLIMI Graduate School of Management", d:"Leadership, Strategy &amp; Operations" },
-  { k:"BA",   t:"University of Nottingham", d:"Politics &amp; International Relations" }
+  { k:"Exec", t:"POLIMI Graduate School of Management", d:"Leadership &amp; Strategy" },
+  { k:"BA",   t:"University of Nottingham", d:"Politics &amp; IR" }
 ];
 
 /* ---- render ---- */
@@ -183,13 +185,14 @@ document.getElementById('work').innerHTML = WORK.map(w => `
 
 document.getElementById('links').innerHTML = LINKS.map(l => `
   <a href="${esc(l.h)}" target="_blank" rel="noopener" data-tick>
-    <span class="k">${esc(l.k)}</span><span>${esc(l.t)}</span><span class="ar">&#8599;</span>
+    <span class="k">${esc(l.k)}</span><span class="t">${esc(l.t)}</span
+    ><span class="d">${esc(l.d)}</span><span class="ar">&#8599;</span>
   </a>`).join('');
 
 document.getElementById('edu').innerHTML = EDU.map(e => `
-  <div><span class="k">${esc(e.k)}</span><span>${e.t}</span><span class="d">${e.d}</span></div>`).join('');
+  <div><span class="k">${esc(e.k)}</span><span class="t">${e.t}</span><span class="d">${e.d}</span></div>`).join('');
 
-/* ---- feedback: sound + haptics ---- */
+/* ---- sound + haptics ---- */
 let soundOn = true;
 try { soundOn = localStorage.getItem('sound') !== 'off'; } catch (e) {}
 
@@ -271,9 +274,8 @@ sndBtn.addEventListener('click', () => {
 
 const root = document.documentElement, themeBtn = document.getElementById('theme');
 const meta = document.querySelector('meta[name="theme-color"]');
-function paintMeta() {
-  meta.setAttribute('content', getComputedStyle(document.body).backgroundColor);
-}
+const paintMeta = () => meta.setAttribute('content', getComputedStyle(document.body).backgroundColor);
+
 try { const s = localStorage.getItem('theme'); if (s) root.dataset.theme = s; } catch (e) {}
 paintMeta();
 
@@ -283,7 +285,7 @@ themeBtn.addEventListener('click', () => {
   root.dataset.theme = dark ? 'light' : 'dark';
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
   themeBtn.classList.toggle('spin');
-  setTimeout(paintMeta, 500);
+  setTimeout(paintMeta, 460);
   fx.toggle();
 });
 </script>
