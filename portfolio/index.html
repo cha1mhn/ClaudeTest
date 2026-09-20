@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chai</title>
 <meta name="description" content="Chai. Revenue operations. London." />
+<meta name="theme-color" content="#FFFFFF" />
 <link rel="icon" href="chai.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{ --bg:#FFFFFF; --ink:#111111; --dim:#8A8A8A; --line:#E8E8E8; }
-:root[data-theme="dark"]{ --bg:#0D0D0D; --ink:#EDEDED; --dim:#7C7C7C; --line:#242424; }
-@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --bg:#0D0D0D; --ink:#EDEDED; --dim:#7C7C7C; --line:#242424; } }
+:root{ --bg:#FFFFFF; --ink:#111111; --dim:#8A8A8A; --line:#E8E8E8; --ac:#BC4B23; }
+:root[data-theme="dark"]{ --bg:#0D0D0D; --ink:#EDEDED; --dim:#7C7C7C; --line:#242424; --ac:#F08A5D; }
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --bg:#0D0D0D; --ink:#EDEDED; --dim:#7C7C7C; --line:#242424; --ac:#F08A5D; } }
 @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
 
 *{box-sizing:border-box;margin:0}
@@ -21,58 +22,88 @@ body{
   font:400 17px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
   -webkit-font-smoothing:antialiased; letter-spacing:-.011em;
   padding:0 24px; overflow-x:hidden;
+  transition:background .5s ease, color .5s ease;
 }
 main{max-width:640px;margin:0 auto;padding:13vh 0 12vh}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--ink);color:var(--bg)}
+::selection{background:var(--ac);color:#fff}
 
+/* header */
 .top{display:flex;align-items:center;gap:14px;margin-bottom:10vh}
-.top img{width:46px;height:46px;border-radius:50%;display:block}
+.top img{width:46px;height:46px;border-radius:50%;display:block;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.top img:hover{transform:scale(1.08) rotate(-3deg)}
 .top .nm{font-weight:500}
 .top nav{margin-left:auto;display:flex;align-items:center;gap:18px}
-.top nav a,.top button{color:var(--dim);font:inherit;font-size:15px;background:none;border:0;padding:0;cursor:pointer;transition:color .25s}
-.top nav a:hover,.top button:hover{color:var(--ink)}
+.top nav a,.top button{position:relative;color:var(--dim);font:inherit;font-size:15px;background:none;border:0;padding:0;cursor:pointer;transition:color .25s,transform .35s}
+.top nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1px;background:var(--ac);transition:right .3s cubic-bezier(.22,1,.36,1)}
+.top nav a:hover{color:var(--ac)}
+.top nav a:hover::after{right:0}
+.top button:hover{color:var(--ac)}
+#snd.on{color:var(--ac)}
+#theme{transition:transform .5s cubic-bezier(.22,1,.36,1),color .25s}
+#theme.spin{transform:rotate(180deg)}
 
+/* intro */
 .lede{font-size:26px;line-height:1.35;letter-spacing:-.022em;margin-bottom:26px}
 .now{color:var(--dim);font-size:17px;max-width:54ch}
-.now b{font-weight:500;color:var(--ink)}
+.now b{font-weight:500;color:var(--ac)}
 
 h2{font-size:15px;font-weight:400;color:var(--dim);margin:10vh 0 4px;letter-spacing:0}
 
+/* work list */
 .list{border-top:1px solid var(--line)}
 .row{border-bottom:1px solid var(--line)}
-.hd{display:flex;gap:18px;align-items:baseline;width:100%;padding:15px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;transition:opacity .3s}
-.hd .yr{color:var(--dim);font-size:14px;flex:none;width:80px;font-variant-numeric:tabular-nums}
+.hd{display:flex;gap:18px;align-items:center;width:100%;padding:15px 0;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;
+    transition:opacity .3s,transform .35s cubic-bezier(.22,1,.36,1)}
+.hd .yr{color:var(--ac);font-size:14px;flex:none;width:80px;font-variant-numeric:tabular-nums;transition:letter-spacing .35s}
 .hd .co{flex:1;min-width:0}
-.hd .rl{color:var(--dim);flex:none;text-align:right}
-.hd .rl::after{content:" +";}
-.row.open .rl::after{content:" \2013";}
-.list.hovering .row:not(:hover) .hd{opacity:.32}
-.body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
-.body p{color:var(--dim);font-size:16px;padding:0 0 18px 98px;max-width:62ch}
+.hd .rl{color:var(--dim);flex:none;text-align:right;transition:color .25s}
+.row:hover .hd,.row.open .hd{transform:translateX(5px)}
+.row:hover .yr{letter-spacing:.03em}
+.row:hover .rl,.row.open .rl{color:var(--ink)}
+.list.hovering .row:not(:hover) .hd{opacity:.3}
+.hd:active{transform:translateX(5px) scale(.99)}
 
+/* plus / minus marker */
+.mk{position:relative;width:9px;height:9px;flex:none;margin-left:10px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.mk::before,.mk::after{content:"";position:absolute;background:var(--ac);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.mk::before{left:0;right:0;top:4px;height:1.5px}
+.mk::after{top:0;bottom:0;left:4px;width:1.5px}
+.row.open .mk{transform:rotate(180deg)}
+.row.open .mk::after{transform:scaleY(0)}
+
+.body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.body p{color:var(--dim);font-size:16px;padding:0 0 18px 98px;max-width:62ch;
+        opacity:0;transform:translateY(6px);transition:opacity .4s .12s,transform .4s .12s}
+.row.open .body p{opacity:1;transform:none}
+
+/* link + education lists */
 .links{border-top:1px solid var(--line)}
-.links a,.links div{display:flex;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);transition:opacity .3s}
-.links.hovering a:not(:hover){opacity:.32}
-.links .k{color:var(--dim);font-size:14px;flex:none;width:80px}
+.links a,.links div{display:flex;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);
+                    transition:opacity .3s,transform .35s cubic-bezier(.22,1,.36,1)}
+.links a:hover{transform:translateX(5px)}
+.links.hovering a:not(:hover){opacity:.3}
+.links .k{color:var(--ac);font-size:14px;flex:none;width:80px}
 .links .d{color:var(--dim);margin-left:auto;text-align:right;flex:none}
-.links .ar{margin-left:auto;color:var(--dim);transition:transform .25s}
-.links a:hover .ar{transform:translate(3px,-3px)}
+.links .ar{margin-left:auto;color:var(--ac);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.links a:hover .ar{transform:translate(4px,-4px)}
 
 footer{margin-top:11vh;color:var(--dim);font-size:15px}
-footer a{border-bottom:1px solid var(--line)}
-footer a:hover{color:var(--ink);border-color:var(--ink)}
+footer a{border-bottom:1px solid var(--line);transition:color .25s,border-color .25s}
+footer a:hover{color:var(--ac);border-color:var(--ac)}
 
 @media(max-width:560px){
   main{padding:8vh 0 10vh}
   .lede{font-size:22px}
   .hd,.links a,.links div{flex-wrap:wrap;gap:0 14px}
   .hd .yr,.links .k{width:100%;margin-bottom:3px}
-  .hd .rl,.links .d{width:100%;text-align:left;margin-left:0}
+  .hd .rl,.links .d{width:auto;text-align:left;margin-left:0}
+  .hd .co{flex:1 0 100%}
+  .mk{margin-left:auto}
   .body p{padding-left:0}
 }
 
-.fade{opacity:0;transform:translateY(8px);animation:up .7s cubic-bezier(.22,1,.36,1) forwards}
+.fade{opacity:0;transform:translateY(10px);animation:up .75s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes up{to{opacity:1;transform:none}}
 </style>
 </head>
@@ -83,7 +114,8 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
     <img src="chai.png" alt="Chai" width="46" height="46" />
     <span class="nm">Chai</span>
     <nav>
-      <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener" data-tick>LinkedIn</a>
+      <button id="snd" class="on" aria-label="Toggle sound" aria-pressed="true">&#9834;</button>
       <button id="theme" aria-label="Toggle theme">&#9680;</button>
     </nav>
   </div>
@@ -108,7 +140,7 @@ footer a:hover{color:var(--ink);border-color:var(--ink)}
   <h2>Education</h2>
   <div class="links" id="edu"></div>
 
-  <footer>London. <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener">Say hello</a>.</footer>
+  <footer>London. <a href="https://www.linkedin.com/in/chaitanyamohan/" target="_blank" rel="noopener" data-tick>Say hello</a>.</footer>
 </main>
 
 <script>
@@ -127,14 +159,14 @@ const WORK = [
 ];
 
 const LINKS = [
-  { k:"Interview", t:"Unlocking the Power of RevOps", d:"Datazip",
+  { k:"Interview", t:"Unlocking the Power of RevOps",
     h:"https://datazip.io/blog/unlocking-the-power-of-revops-an-insiders-perspective-with-chaitanya-mohan" }
 ];
 
 const EDU = [
-  { k:"MSc",   t:"Queen's University Belfast", d:"Distinction" },
-  { k:"Exec",  t:"POLIMI Graduate School of Management", d:"Leadership, Strategy &amp; Operations" },
-  { k:"BA",    t:"University of Nottingham", d:"Politics &amp; International Relations" }
+  { k:"MSc",  t:"Queen's University Belfast", d:"Distinction" },
+  { k:"Exec", t:"POLIMI Graduate School of Management", d:"Leadership, Strategy &amp; Operations" },
+  { k:"BA",   t:"University of Nottingham", d:"Politics &amp; International Relations" }
 ];
 
 /* ---- render ---- */
@@ -143,18 +175,60 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 document.getElementById('work').innerHTML = WORK.map(w => `
   <div class="row">
     <button class="hd" aria-expanded="false">
-      <span class="yr">${esc(w.yr)}</span><span class="co">${esc(w.co)}</span><span class="rl">${esc(w.rl)}</span>
+      <span class="yr">${esc(w.yr)}</span><span class="co">${esc(w.co)}</span
+      ><span class="rl">${esc(w.rl)}</span><span class="mk"></span>
     </button>
     <div class="body"><p>${esc(w.note)}</p></div>
   </div>`).join('');
 
 document.getElementById('links').innerHTML = LINKS.map(l => `
-  <a href="${esc(l.h)}" target="_blank" rel="noopener">
+  <a href="${esc(l.h)}" target="_blank" rel="noopener" data-tick>
     <span class="k">${esc(l.k)}</span><span>${esc(l.t)}</span><span class="ar">&#8599;</span>
   </a>`).join('');
 
 document.getElementById('edu').innerHTML = EDU.map(e => `
   <div><span class="k">${esc(e.k)}</span><span>${e.t}</span><span class="d">${e.d}</span></div>`).join('');
+
+/* ---- feedback: sound + haptics ---- */
+let soundOn = true;
+try { soundOn = localStorage.getItem('sound') !== 'off'; } catch (e) {}
+
+const sndBtn = document.getElementById('snd');
+function paintSnd() {
+  sndBtn.classList.toggle('on', soundOn);
+  sndBtn.setAttribute('aria-pressed', String(soundOn));
+  sndBtn.innerHTML = soundOn ? '&#9834;' : '&#9835;';
+  sndBtn.style.opacity = soundOn ? '1' : '.45';
+}
+paintSnd();
+
+let actx = null;
+function tone(from, to, dur = .09, vol = .05) {
+  if (!soundOn) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    const t = actx.currentTime, o = actx.createOscillator(), g = actx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(from, t);
+    o.frequency.exponentialRampToValueAtTime(to, t + dur);
+    g.gain.setValueAtTime(.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + .01);
+    g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g).connect(actx.destination);
+    o.start(t); o.stop(t + dur + .02);
+  } catch (e) {}
+}
+
+// navigator.vibrate is Android only; iOS Safari ignores it
+const buzz = ms => { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} };
+
+const fx = {
+  open:   () => { tone(420, 760, .10); buzz(12); },
+  close:  () => { tone(700, 380, .09, .04); buzz(7); },
+  tick:   () => { tone(900, 900, .035, .035); buzz(5); },
+  toggle: () => { tone(560, 880, .13, .05); buzz([8, 26, 12]); }
+};
 
 /* ---- interactions ---- */
 document.querySelectorAll('.list, .links').forEach(l => {
@@ -165,32 +239,52 @@ document.querySelectorAll('.list, .links').forEach(l => {
 document.getElementById('work').addEventListener('click', e => {
   const row = e.target.closest('.row');
   if (!row) return;
-  const body = row.querySelector('.body'), open = row.classList.contains('open');
+  const body = row.querySelector('.body'), wasOpen = row.classList.contains('open');
   document.querySelectorAll('.row.open').forEach(o => {
     o.classList.remove('open');
     o.querySelector('.body').style.maxHeight = '0';
     o.querySelector('.hd').setAttribute('aria-expanded', 'false');
   });
-  if (!open) {
+  if (!wasOpen) {
     row.classList.add('open');
     body.style.maxHeight = body.scrollHeight + 'px';
     row.querySelector('.hd').setAttribute('aria-expanded', 'true');
+    fx.open();
+  } else {
+    fx.close();
   }
 });
 
-// keep an expanded row the right height when the window changes width
+document.addEventListener('click', e => { if (e.target.closest('[data-tick]')) fx.tick(); });
+
 addEventListener('resize', () => {
   const open = document.querySelector('.row.open .body');
   if (open) { open.style.maxHeight = 'none'; open.style.maxHeight = open.scrollHeight + 'px'; }
 });
 
-const root = document.documentElement;
+sndBtn.addEventListener('click', () => {
+  soundOn = !soundOn;
+  try { localStorage.setItem('sound', soundOn ? 'on' : 'off'); } catch (e) {}
+  paintSnd();
+  if (soundOn) fx.toggle(); else buzz(7);
+});
+
+const root = document.documentElement, themeBtn = document.getElementById('theme');
+const meta = document.querySelector('meta[name="theme-color"]');
+function paintMeta() {
+  meta.setAttribute('content', getComputedStyle(document.body).backgroundColor);
+}
 try { const s = localStorage.getItem('theme'); if (s) root.dataset.theme = s; } catch (e) {}
-document.getElementById('theme').addEventListener('click', () => {
+paintMeta();
+
+themeBtn.addEventListener('click', () => {
   const dark = getComputedStyle(document.body).backgroundColor.match(/\d+/g)
     .slice(0, 3).reduce((a, b) => a + +b, 0) / 3 < 128;
   root.dataset.theme = dark ? 'light' : 'dark';
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  themeBtn.classList.toggle('spin');
+  setTimeout(paintMeta, 500);
+  fx.toggle();
 });
 </script>
 </body>
